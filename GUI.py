@@ -63,6 +63,8 @@ def create_buttons():
 def get_data() -> Movement:
     try:
         v0 = float(entry_v0.get())
+        if v0 < 0:
+            raise ValueError
     except ValueError:
         entry_v0.delete(0, END)
         entry_v0.insert(0, '20')
@@ -75,6 +77,8 @@ def get_data() -> Movement:
         alpha = Angle(deg=45)
     try:
         m = float(entry_m.get())
+        if m < 0:
+            raise ValueError
     except ValueError:
         entry_m.delete(0, END)
         entry_m.insert(0, '1')
