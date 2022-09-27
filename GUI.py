@@ -1,4 +1,3 @@
-from math import cos, sin
 from tkinter import *
 from main import Movement, Angle, draw_plot, case_1, case_2
 

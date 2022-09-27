@@ -1,7 +1,4 @@
-from dataclasses import dataclass
 from math import sin, cos, exp, pi
-from tkinter import messagebox
-from typing import Tuple, List, Any
 from math import sqrt
 
 import matplotlib.pyplot as plt
@@ -23,19 +20,6 @@ class Angle:
 
     def __str__(self):
         return f'∠α = {self.deg}°, {self.rad} rads'
-
-
-# @dataclass
-# class Movement:
-#     v0: float = 10
-#     alpha: Angle = Angle(deg=45)
-#     # v0x = _v0 * cos(alpha.rad)
-#     # v0y = _v0 * sin(alpha.rad)
-#     m: float = 1
-#     k: float = 0
-#
-#     def __str__(self):
-#         return f'{self.v0=}, {self.alpha=}, {self.m=}, {self.k=}'
 
 
 class Movement:
@@ -72,31 +56,6 @@ def data_entry() -> Movement:
 
     return Movement(v0, alpha, m, k)
 
-
-# def calc_coord(v0: float, alpha: float, m: float, k: float) -> tuple[None, None] | tuple[
-#     list[float | Any], list[float | Any]]:
-#     t, xlist, ylist = 0, [], []
-#     while True:
-#         if k == 0:
-#             x = v0 * cos(alpha) * t
-#             y = v0 * sin(alpha) * t - g * t * t / 2
-#         else:
-#             try:
-#                 x = v0 * cos(alpha) * m / k * (1 - exp(-(k / m) * t))
-#                 # x = v0 * cos(alpha) * m / k * (1 - np.exp(-(k / m) * t, dtype=np.longfloat))
-#                 y = m * ((v0 * sin(alpha) + m * g / k) * (1 - exp(-k * t / m)) - g * t) / k
-#                 # y = m * ((v0 * sin(alpha) + m * g / k) * (1 - np.exp(-(k / m) * t, dtype=np.longfloat)) - g * t) / k
-#             except ZeroDivisionError:
-#                 messagebox.showinfo("Что-то пошло не так", 'Укажите массу')
-#                 return None, None
-#
-#         xlist.append(x)
-#         ylist.append(y)
-#
-#         if y <= 0 and t > 0:
-#             break
-#         t += 0.001
-#     return xlist, ylist
 
 dt = 0.001
 
