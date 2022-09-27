@@ -84,7 +84,6 @@ def case_1(vx, vy):
 
         xlist.append(x)
         ylist.append(y)
-        # print(y)
 
         if y <= 0 and t > 0:
             break
