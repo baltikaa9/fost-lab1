@@ -1,2 +1,2 @@
 # **Fost labs**
-## *Go to branches*
+> *Go to branches*
