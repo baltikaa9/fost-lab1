@@ -1,10 +1,10 @@
-from math import sin, cos, exp, pi
-from math import sqrt
+from math import pi
 
 import matplotlib.pyplot as plt
 
 
 def fall_air(m, height=None, chest_circumference=None, R=None, ro=1.29, c=None, g=9.8):
+    """Парашютист"""
     t, v0, h0 = 0, 0, 0
     tlist, vlist, hlist = [], [], []
     if R is None:
@@ -31,6 +31,7 @@ def fall_air(m, height=None, chest_circumference=None, R=None, ro=1.29, c=None, 
 
 
 def fall_viscous_med(r, ro_solid, ro_liquid, viscosity, g=9.8):
+    """Шар в глицерине"""
     t, v0, h0 = 0, 0, 0
     tlist, vlist, hlist = [], [], []
 
@@ -64,7 +65,7 @@ def draw_v(t1: list, v1: list, t2: list = None, v2: list = None):
     if t2 is not None:
         ax.plot(t1, v1, color='black', label='Без парашюта')
         ax.plot(t2, v2, color='red', label='С парашютом')
-        ax.grid()
+
         ax.legend()
     else:
         ax.plot(t1, v1, color='black')
@@ -93,15 +94,11 @@ def draw_h(t1: list, h1: list, t2: list = None, h2: list = None):
 
 
 def main():
-    # obj = data_entry()
-    # x1, y1 = case_1(obj.v0x, obj.v0y)
-    # x2, y2 = case_2(obj.v0x, obj.v0y, obj.m, obj.k)
-    # draw_plot(x1, y1, x2, y2, obj.k)
-
     t1, v1, h1 = fall_air(80, 1.65, 0.33, c=1.22)
     t2, v2, h2 = fall_air(80, R=2.7, c=1.33)
     draw_v(t1, v1, t2, v2)
     draw_h(t1, h1, t2, h2)
+
     t, v, h = fall_viscous_med(0.1, 7800, 1260, 1480)
     draw_v(t, v)
     draw_h(t, h)
