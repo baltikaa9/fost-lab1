@@ -97,9 +97,6 @@ def run(event=None):
     if not plt.fignum_exists(1):
         ax = create_plot()
 
-    ax.clear()
-    ax.grid()
-
     x0, v0, t = data_entry()
 
     x, y = calculation(x0, v0, t)

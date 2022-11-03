@@ -31,19 +31,19 @@ def calculation(x0: float, v0: float, t: float) -> tuple[list[float], list[float
 
 
 def draw(ax, x: list, y: list):
+    ax.clear()
+    ax.set(title='Траектория движения спутника',
+           xlabel='x',
+           ylabel='y')
+    ax.grid()
     ax.plot(x, y, color='black')
     ax.scatter(0, 0, color='dodgerblue', label='Земля')
     ax.legend()
 
 
 def create_plot():
-    plt.figure(num=1, facecolor='gray')
-    ax = plt.gca()
-    ax.set(title='Траектория движения спутника',
-           xlabel='x',
-           ylabel='y')
-
-    ax.grid()
+    fig = plt.figure(num=1, facecolor='gray')
+    ax = fig.add_subplot(111)
 
     return ax
 
