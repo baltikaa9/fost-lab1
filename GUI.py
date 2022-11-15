@@ -6,7 +6,7 @@ from matplotlib import pyplot as plt
 from main import calculation, create_plot, draw
 
 root = Tk()
-root.title('Траектория движения тела')
+root.title('Колебания в электрическом колебательном контуре')
 root.geometry('490x300')
 root.resizable(width=False, height=False)
 
