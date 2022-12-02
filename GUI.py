@@ -19,11 +19,11 @@ def create_labels():
     Label(frame, text='Введите данные', bg='white', font='Arial 14').pack()
 
     Label(frame, text='q, Кл - заряд частицы', bg='white').place(x=270, y=50)
-    Label(frame, text='m, кг - начальный заряд конденсатора', bg='white').place(x=270, y=70)
+    Label(frame, text='m, кг - масса частицы', bg='white').place(x=270, y=70)
     Label(frame, text='v0x, м/с - скорость по x', bg='white').place(x=270, y=90)
     Label(frame, text='v0z, м/с - скорость по z', bg='white').place(x=270, y=110)
     Label(frame, text='B, Тл - индукция магнитного поля', bg='white').place(x=270, y=130)
-    Label(frame, text='t, с - время вращения частицы', bg='white').place(x=270, y=150)
+    Label(frame, text='t, с - время движения частицы', bg='white').place(x=270, y=150)
 
 
 def create_entries() -> tuple[Entry, Entry, Entry, Entry, Entry, Entry]:
