@@ -3,7 +3,7 @@ from tkinter import *
 
 from matplotlib import pyplot as plt
 
-from main import calculation, create_plot, draw
+from main import calculation, create_plot, draw, create_plot_3d, draw_3d
 
 root = Tk()
 root.title('Движение заряженной частицы в магнитном поле')
@@ -47,25 +47,27 @@ def create_entries() -> tuple[Entry, Entry, Entry, Entry, Entry, Entry]:
     entry_v0x.insert(0, '800')
     entry_v0z.insert(0, '200')
     entry_B.insert(0, '1.67E-5')
-    entry_t.insert(0, '0.015')
+    entry_t.insert(0, '0.1')
 
-    entry_q.bind('<Return>', run)
-    entry_m.bind('<Return>', run)
-    entry_v0x.bind('<Return>', run)
-    entry_v0z.bind('<Return>', run)
-    entry_B.bind('<Return>', run)
-    entry_t.bind('<Return>', run)
+    entry_q.bind('<Return>', run3d)
+    entry_m.bind('<Return>', run3d)
+    entry_v0x.bind('<Return>', run3d)
+    entry_v0z.bind('<Return>', run3d)
+    entry_B.bind('<Return>', run3d)
+    entry_t.bind('<Return>', run3d)
 
     return entry_q, entry_m, entry_v0x, entry_v0z, entry_B, entry_t
 
 
 def create_buttons():
     """Кнопки"""
-    btn_run = Button(frame, text='Построить', bg='white', command=run, width=16, height=2)
+    btn_run_2d = Button(frame, text='Построить 2D', bg='white', command=run2d, width=16, height=2)
+    btn_run_3d = Button(frame, text='Построить 3D', bg='white', command=run3d, width=16, height=2)
     btn_quit = Button(frame, text='Выход', bg='white', command=terminate, width=16, height=2)
 
-    btn_run.place(x=480/2-57, y=200)
-    btn_quit.place(x=480/2-57, y=250)
+    btn_run_2d.place(x=480 / 2 - 123, y=200)
+    btn_run_3d.place(x=480 / 2 + 7, y=200)
+    btn_quit.place(x=480 / 2 - 57, y=250)
 
 
 def terminate():
@@ -120,12 +122,12 @@ def data_entry() -> tuple[float | int, float | int, float | int, float | int, fl
             raise ValueError
     except ValueError:
         entry_t.delete(0, END)
-        entry_t.insert(0, '0.015')
-        t = 0.015
+        entry_t.insert(0, '0.1')
+        t = 0.1
     return q, m, v0x, v0z, B, t
 
 
-def run(event=None):
+def run2d(event=None):
     global axXY, axXZ, axYZ
     if not plt.fignum_exists(1):
         axXY, axXZ, axYZ = create_plot()
@@ -134,6 +136,19 @@ def run(event=None):
 
     x, y, z = calculation(q, m, v0x, v0z, B, t)
     draw(axXY, axXZ, axYZ, x, y, z)
+
+    plt.show()
+
+
+def run3d(event=None):
+    global ax
+    if not plt.fignum_exists(2):
+        ax = create_plot_3d()
+
+    q, m, v0x, v0z, B, t = data_entry()
+
+    x, y, z = calculation(q, m, v0x, v0z, B, t)
+    draw_3d(ax, x, y, z)
 
     plt.show()
 

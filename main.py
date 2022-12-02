@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from mpl_toolkits import mplot3d
 
 from vector import Vector3D
 
@@ -57,6 +58,15 @@ def draw(axXY, axXZ, axYZ, x: list, y: list, z: list):
     axYZ.plot(y, z, color='black')
 
 
+def draw_3d(ax, x: list, y: list, z: list):
+    ax.clear()
+    ax.set(title='Движение заряженной частицы в магнитном поле',
+           xlabel='X',
+           ylabel='Y',
+           zlabel='Z')
+    ax.plot3D(x, y, z, color='black')
+
+
 def create_plot():
     fig = plt.figure(num=1, facecolor='gray')
     gs = fig.add_gridspec(1, 4)
@@ -66,12 +76,19 @@ def create_plot():
     return axXY, axXZ, axYZ
 
 
+def create_plot_3d():
+    fig = plt.figure(num=2, facecolor='gray')
+    ax = plt.axes(projection='3d')
+    return ax
+
+
 def main():
     axXY, axXZ, axYZ = create_plot()
-
+    ax = create_plot_3d()
     x, y, z = calculation(q0, m0, v0x, v0z, B0, Tmax)
 
     draw(axXY, axXZ, axYZ, x, y, z)
+    draw_3d(ax, x, y, z)
 
     plt.show()
 
