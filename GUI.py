@@ -70,11 +70,6 @@ def create_buttons():
     btn_quit.place(x=480 / 2 - 57, y=250)
 
 
-def terminate():
-    root.destroy()
-    plt.close()
-
-
 def data_entry() -> tuple[float | int, float | int, float | int, float | int, float | int, float | int]:
     try:
         q = float(entry_q.get())
@@ -151,6 +146,11 @@ def run3d(event=None):
     draw_3d(ax, x, y, z)
 
     plt.show()
+
+
+def terminate():
+    root.destroy()
+    plt.close('all')
 
 
 if __name__ == '__main__':

@@ -64,6 +64,7 @@ def draw_3d(ax, x: list, y: list, z: list):
            xlabel='X',
            ylabel='Y',
            zlabel='Z')
+    # ax.scatter(0, 0, color='black')
     ax.plot3D(x, y, z, color='black')
 
 
