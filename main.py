@@ -9,7 +9,7 @@ v0x = 800
 v0z = 200
 B0 = 1.67E-5
 Tmax = 0.015
-dt = 0.00001
+dt = 0.0000005
 
 
 def calculation(q: float, m: float, v0x: float, v0z: float, B0: float, Tmax: float) -> tuple[list[float], list[float], list[float]]:
